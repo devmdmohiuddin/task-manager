@@ -10,6 +10,7 @@ const app = express();
 connectDB()
 
 // middleware
+app.use(express.json())
 app.use(morgan("dev"));
 
 // routes
