@@ -3,6 +3,7 @@ const morgan = require("morgan");
 require("dotenv").config();
 const taskRoutes = require("./routes/taskRoutes");
 const connectDB = require('./config/db')
+const notFound = require('./middlewares/notFoundMiddleware')
 
 const app = express();
 
@@ -15,6 +16,8 @@ app.use(morgan("dev"));
 
 // routes
 app.use("/api/v1/tasks", taskRoutes);
+
+app.use(notFound)
 
 app.get("/", (_, res) => {
   res.send("Api is running...");
